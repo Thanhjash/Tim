@@ -59,13 +59,37 @@ Mở http://localhost:3000
 
 ## Deploy với Docker (VPS)
 
-### Build và chạy với Docker Compose
+### Deployment tự động (Production - Khuyến nghị)
+
+```bash
+# 1. Tạo file .env với GEMINI_API_KEY
+echo "GEMINI_API_KEY=your_key_here" > .env
+
+# 2. Chạy deployment script
+./deploy-vps.sh
+
+# 3. (Optional) Setup SSL với Let's Encrypt
+./setup-ssl.sh your-domain.com
+
+# 4. (Optional) Setup auto backup
+./backup.sh
+# Add to crontab: 0 2 * * * cd /path/to/project && ./backup.sh
+```
+
+Script `deploy-vps.sh` sẽ tự động:
+- ✅ Kiểm tra và cài đặt Docker/Docker Compose
+- ✅ Build Docker image
+- ✅ Start containers với Nginx reverse proxy
+- ✅ Setup health checks
+- ✅ Verify deployment
+
+### Development (Local testing)
 
 ```bash
 # Tạo file .env với GEMINI_API_KEY
 echo "GEMINI_API_KEY=your_key_here" > .env
 
-# Build và run
+# Build và run (simple mode, no Nginx)
 docker-compose up -d
 
 # Xem logs
@@ -88,6 +112,19 @@ docker run -d \
   -v $(pwd)/data:/app/data \
   --name expense-chatbot \
   expense-chatbot
+```
+
+### Production với Nginx Reverse Proxy
+
+```bash
+# Build và run với Nginx
+docker compose -f docker-compose.prod.yml up -d
+
+# Xem logs
+docker compose -f docker-compose.prod.yml logs -f
+
+# Stop
+docker compose -f docker-compose.prod.yml down
 ```
 
 ## Deploy lên Vercel
