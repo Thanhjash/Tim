@@ -2,6 +2,25 @@
 
 Chatbot quản lý chi tiêu thông minh với AI, sử dụng Next.js, SQLite, và Gemini AI.
 
+## 🔴 FILE HOST CHÍNH CHO VPS
+
+**Để deploy lên VPS, bạn cần:**
+
+1. **File config chính:** `docker-compose.prod.yml` ← Host production với file này
+2. **Script tự động:** `deploy-vps.sh` ← Hoặc chạy script này (khuyến nghị)
+3. **File .env:** Tạo với `GEMINI_API_KEY=your_key`
+
+**Quick Deploy (3 bước):**
+```bash
+git clone <repo-url> && cd Tim
+echo "GEMINI_API_KEY=your_key" > .env
+./deploy-vps.sh
+```
+
+📖 **Xem hướng dẫn chi tiết:** [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md)
+
+---
+
 ## Tính năng
 
 - Nhập chi tiêu bằng tiếng Việt tự nhiên
