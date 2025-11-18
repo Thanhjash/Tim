@@ -2,22 +2,34 @@
 
 Chatbot quản lý chi tiêu thông minh với AI, sử dụng Next.js, SQLite, và Gemini AI.
 
-## 🔴 FILE HOST CHÍNH CHO VPS
+## 🔴 DEPLOY LÊN VPS (KHUYẾN NGHỊ)
 
-**Để deploy lên VPS, bạn cần:**
+### 🚀 Quick Deploy (3 bước - DỄ NHẤT!)
 
-1. **File config chính:** `docker-compose.prod.yml` ← Host production với file này
-2. **Script tự động:** `deploy-vps.sh` ← Hoặc chạy script này (khuyến nghị)
-3. **File .env:** Tạo với `GEMINI_API_KEY=your_key`
-
-**Quick Deploy (3 bước):**
 ```bash
+# 1. Clone repo
 git clone <repo-url> && cd Tim
+
+# 2. Tạo .env với Gemini API key
 echo "GEMINI_API_KEY=your_key" > .env
+
+# 3. Chạy script tự động
 ./deploy-vps.sh
 ```
 
-📖 **Xem hướng dẫn chi tiết:** [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md)
+**XONG!** App chạy tại `http://your_vps_ip` 🎉
+
+### 📚 Hướng dẫn chi tiết:
+
+- **🔥 [VPS_DEPLOYMENT_STEP_BY_STEP.md](VPS_DEPLOYMENT_STEP_BY_STEP.md)** ← HƯỚNG DẪN CHI TIẾT TỪNG BƯỚC (Khuyến nghị đọc!)
+- [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) - Advanced deployment guide
+- [TESTING_CHECKLIST.md](TESTING_CHECKLIST.md) - Testing guide
+
+### 📁 Files quan trọng:
+
+- `docker-compose.prod.yml` - Production config (Nginx + App)
+- `deploy-vps.sh` - Auto deployment script
+- `.env.example` - Environment template
 
 ---
 
